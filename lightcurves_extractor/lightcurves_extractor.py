@@ -103,6 +103,8 @@ def make_dict_for_source(
         index_type=index_type,
         ts_min=ts_min
     )
+    if lc is None:
+        return dict()
     return prepare_dict(lc)
 
 def save_json_for_source(
@@ -120,6 +122,8 @@ def save_json_for_source(
         index_type=index_type,
         ts_min=ts_min
     )
+    if not json_dict:
+        return
     source_name = source_name.split(" ")[0] + "_20" + source_name.split(" ")[-1]
     filename = f"{save_path}/{source_name}_{cadence}_{flux_type}_{index_type}_tsmin{ts_min}"
     
