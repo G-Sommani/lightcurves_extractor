@@ -111,6 +111,7 @@ def save_json_for_source(
     flux_type='energy',
     index_type='fixed',
     ts_min=4,
+    save_path="",
 ):
     json_dict = make_dict_for_source(
         source_name,
@@ -120,7 +121,7 @@ def save_json_for_source(
         ts_min=ts_min
     )
     source_name = source_name.split(" ")[0] + "_20" + source_name.split(" ")[-1]
-    filename = f"{source_name}_{cadence}_{flux_type}_{index_type}_tsmin{ts_min}"
+    filename = f"{save_path}/{source_name}_{cadence}_{flux_type}_{index_type}_tsmin{ts_min}"
     
     with open(f'{filename}.json', 'w') as f:
         json.dump(json_dict, f, cls=NpEncoder)
